@@ -1,0 +1,24 @@
+#!/bin/bash 
+
+read filename
+
+if  [ ! -e $filename ]; then
+    echo  "$filename does not exist."
+    exit 0
+fi
+
+if  [ -f $filename ]; then
+    echo  "$filename is a common file"
+elif  [ -d $filename ]; then
+    echo  "$filename is a directory"
+elif  [ -L $filename ]; then
+    echo  "$filename is a symbolic link"
+elif  [ -b $filename ]; then
+    echo  -e  "$filename is a block device"
+elif  [ -c $filename ]; then
+    echo  -e  "$filename is a character device"
+elif  [ -p $filename ]; then
+    echo  -e  "$filename is a pipe"
+elif  [ -S $filename ]; then
+    echo  -e  "$filename is a socket"
+fi
